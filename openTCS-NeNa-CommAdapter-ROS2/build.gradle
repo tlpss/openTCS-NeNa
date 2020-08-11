@@ -1,5 +1,5 @@
 // ================== Set HERE your Ros2-Java workspace path. ==================
-String ros2JavaPath = '/opt/ros2-java/ros2_java_ws/'
+String ros2JavaPath = '/home/thomas/ROS/rcljava/ros2_java_ws/'
 // =============================================================================
 
 // JaCoCo
