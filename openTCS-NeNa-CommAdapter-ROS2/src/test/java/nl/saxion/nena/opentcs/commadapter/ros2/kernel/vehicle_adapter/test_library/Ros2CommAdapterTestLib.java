@@ -25,12 +25,12 @@ public abstract class Ros2CommAdapterTestLib {
                 return 1;
             }
 
-            @Override
+            //@Override
             public int commandQueueCapacity() {
                 return 1;
             }
 
-            @Override
+            //@Override
             public String rechargeOperation() {
                 return "TEST_RECHARGE";
             }
