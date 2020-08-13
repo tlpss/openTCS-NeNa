@@ -182,8 +182,8 @@ public class Ros2CommAdapterPanel extends VehicleCommAdapterPanel {
     /* --------------- Attribute change: Position coordinate ---------------*/
     private void updatePositionCoordinateValueLabel(Triple updatedCoordinate) {
         if (updatedCoordinate != null) {
-            double[] unscaled_xyz = UnitConverterLib.convertTripleToCoordinatesInMeter(updatedCoordinate);
-            double[] xyz = ScaleCorrector.getInstance().scaleCoordinatesForVehicle(unscaled_xyz);
+            double[] xyz = UnitConverterLib.convertTripleToCoordinatesInMeter(updatedCoordinate);
+            //double[] xyz = ScaleCorrector.getInstance().scaleCoordinatesForVehicle(unscaled_xyz);
             String coordinateText = String.format("%.2f, %.2f, %.2f", xyz[0], xyz[1], xyz[2]); // Print as two-decimal numbers
             SwingUtilities.invokeLater(() -> positionCoordinateValueLabel.setText(coordinateText));
         }
@@ -192,8 +192,8 @@ public class Ros2CommAdapterPanel extends VehicleCommAdapterPanel {
     /* --------------- Attribute change: Position coordinate (estimation) ---------------*/
     private void updatePositionEstimateValueLabel(Triple updatedEstimate) {
         if (updatedEstimate != null) {
-            double[] unscaled_xyz = UnitConverterLib.convertTripleToCoordinatesInMeter(updatedEstimate);
-            double[] xyz = ScaleCorrector.getInstance().scaleCoordinatesForVehicle(unscaled_xyz);
+            double[] xyz = UnitConverterLib.convertTripleToCoordinatesInMeter(updatedEstimate);
+            //double[] xyz = ScaleCorrector.getInstance().scaleCoordinatesForVehicle(unscaled_xyz);
             String coordinateText = String.format("%.2f, %.2f, %.2f", xyz[0], xyz[1], xyz[2]); // Print as two-decimal numbers
             SwingUtilities.invokeLater(() -> positionEstimateValueLabel.setText(coordinateText));
         }
