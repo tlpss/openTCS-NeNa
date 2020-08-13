@@ -76,4 +76,20 @@ public class ExecuteOperationWorkflowTest {
         assert !this.isOperationExecutionFailedCallbackCalled;
     }
 
+    @Test
+    @SneakyThrows
+    public void testValidParkOperationWorkflow(){
+        Ros2CommAdapter adapter = Ros2CommAdapterTestLib.generateAdapterForTesting();
+        ExecuteOperationWorkflow workflow = new ExecuteOperationWorkflow(
+                adapter.getProcessModel(),
+                this.operationExecutorListener
+        );
+        workflow.executeOperationByName(OperationConstants.PARK);
+        Thread.sleep(1); // The maximum time an operation may take.
+
+        // By now, we should have received feedback that our task has succeeded
+        assert this.isOperationExecutionSucceededCallbackCalled;
+        assert !this.isOperationExecutionFailedCallbackCalled;
+    }
+
 }
