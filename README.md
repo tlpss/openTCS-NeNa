@@ -15,8 +15,9 @@ The following software and software libraries is used for developing the driver:
 All the native OpenTCS features are implemented in this driver, which means that the driver is ready to be used.
 
 General features:
+* Support for OpenTCS Move Orders, both pose & orientation.
 * Support for OpenTCS Transport Orders.
-* Support for OpenTCS Operations.
+* Support for OpenTCS Operations (dummies implemented for "PARK", "Unload cargo" and "Load cargo".
 * Properly handle ROS2 AGV navigation failures, such an unreachable destination.
 * Track the live position of a ROS2 AGV for showing in the OpenTCS Plant Overview.
 * Live orientation of the ROS2 AGV for showing in the OpenTCS Plant Overview.
