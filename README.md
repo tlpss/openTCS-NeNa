@@ -39,6 +39,9 @@ Todo:
 * Get a percentage of how much a current navigation goal has been completed.
 * Show a battery percentage of the vehicle in the OpenTCS Plant Overview.
 
+## ROS node interaction 
+![Alt text](openTCS-NeNa-Documentation/src/docs/img/NeNa-ROS_interaction.png)
+
 ## Demo
 [![Alt text](openTCS-NeNa-Documentation/src/docs/img/youtube_embed.png)](https://youtu.be/x_Bjo7l0uc4)
 
@@ -47,6 +50,7 @@ Here's [a guide about how to setup and use the ROS 2 Driver](openTCS-NeNa-Docume
 
 ## Developer Guide
 Here's [documentation about the development of the ROS 2 Driver](openTCS-NeNa-Documentation/src/docs/developers_guide/developers_guide.adoc) ( [asciidoc](openTCS-NeNa-Documentation/src/docs/developers_guide/developers_guide.adoc) | [pdf](openTCS-NeNa-Documentation/src/docs/developers_guide/developers_guide.pdf) | [odt](openTCS-NeNa-Documentation/src/docs/developers_guide/developers_guide.odt) ).
+
 
 ## Other Documents
 ~~Research ROS 2 communication (pdf).~~ Will be uploaded soon.
