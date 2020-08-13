@@ -73,8 +73,20 @@ public abstract class OperationAllowedLib {
                 return isLoadCargoAllowed();
             case OperationConstants.UNLOAD_CARGO:
                 return isUnloadCargoAllowed();
+            case OperationConstants.PARK:
+                return isParkAllowed();
             default:
                 return getUnknownOperation();
+        }
+    }
+    private static ExplainedBoolean isParkAllowed(){
+        // condition for parking: Empty!
+        boolean isvehicleLoaded = isVehicleLoadedByLoadState(lastKnownLoadState);
+        if (isvehicleLoaded){
+            return notAllowed(PARK_OPERATION_CONFLICT);
+        } else {
+            // no state update
+            return  allowed();
         }
     }
 

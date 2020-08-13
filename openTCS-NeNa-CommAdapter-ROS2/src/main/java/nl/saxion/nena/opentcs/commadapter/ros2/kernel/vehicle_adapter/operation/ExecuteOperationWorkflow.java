@@ -53,6 +53,10 @@ public class ExecuteOperationWorkflow {
             case OperationConstants.UNLOAD_CARGO:
                 executeUnloadCargo();
                 break;
+            case OperationConstants.PARK:
+                executePark();
+                break;
+
             default:
                 String reason = String.format("Action not implemented in %s", this.getClass().getName());
                 onOperationExecutionFailed(reason);
@@ -87,6 +91,14 @@ public class ExecuteOperationWorkflow {
         this.processModel.setVehicleLoadHandlingDevices(Collections.singletonList(new LoadHandlingDevice(LOAD_HANDLING_DEVICE_NAME, false)));
         onOperationExecutionFinished(); // Fake that the operation was successful.
 
+    }
+
+    /*---------------2c: Execute Park -------*/
+    private void executePark() {
+        System.out.println("PARKING...");
+        // TODO: implement park operations if required
+
+        onOperationExecutionFinished();
     }
     // Next step (3) is activated by callback
 

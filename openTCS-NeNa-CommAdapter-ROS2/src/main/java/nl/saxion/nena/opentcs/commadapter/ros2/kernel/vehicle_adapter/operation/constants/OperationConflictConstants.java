@@ -12,4 +12,5 @@ public interface OperationConflictConstants {
     String UNLOAD_OPERATION_CONFLICT = "cannotUnloadWhenNotLoaded";
     String VEHICLE_NOT_IDLE_CONFLICT = "Vehicle is not in idle state";
     String UNKNOWN_OPERATION = "Unknown operation";
+    String PARK_OPERATION_CONFLICT = "cannotParkWhenLoaded";
 }
