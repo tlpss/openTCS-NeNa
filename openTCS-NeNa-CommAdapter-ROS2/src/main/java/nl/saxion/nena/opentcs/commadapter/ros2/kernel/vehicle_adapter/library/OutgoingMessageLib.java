@@ -41,7 +41,6 @@ public abstract class OutgoingMessageLib {
 
     public static PoseStamped generateScaledNavigationMessageByPoint(@Nonnull Point point) {
         Pose pose = generatePoseMessageByPoint(point);
-
         geometry_msgs.msg.PoseStamped poseStamped = new geometry_msgs.msg.PoseStamped();
         poseStamped.setPose(pose);
 
@@ -49,6 +48,7 @@ public abstract class OutgoingMessageLib {
     }
 
     private static Pose generatePoseMessageByPoint(@Nonnull Point point) {
+        // set position
         Triple triple = point.getPosition();
         double[] xyzUnscaled = UnitConverterLib.convertTripleToCoordinatesInMeter(triple);
         double[] xyzScaled = ScaleCorrector.getInstance().scaleCoordinatesForVehicle(xyzUnscaled);
@@ -60,6 +60,15 @@ public abstract class OutgoingMessageLib {
 
         geometry_msgs.msg.Pose pose = new geometry_msgs.msg.Pose();
         pose.setPosition(position);
+
+        //set orientation
+        double orientation_angle = point.getVehicleOrientationAngle();
+        if (!Double.isNaN(orientation_angle)) {
+            // angle is specified for this point
+            // orientation_angle = ROS yaw in degrees
+            pose.setOrientation(UnitConverterLib.VehicleOrientationToQuaternion(orientation_angle));
+
+        }
 
         return pose;
     }

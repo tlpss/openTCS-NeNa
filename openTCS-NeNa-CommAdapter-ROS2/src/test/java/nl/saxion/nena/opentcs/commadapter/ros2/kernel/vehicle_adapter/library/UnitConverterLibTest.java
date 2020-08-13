@@ -61,4 +61,19 @@ public class UnitConverterLibTest {
         double angleTowardsWest = UnitConverterLib.quaternionToAngleDegree(quaternionTowardsNorth);
         assert angleTowardsWest == 180; // exact west
     }
+
+    @Test
+    public void testOrientationToQuaternion(){
+        //case 1 - just take random orientation out of running OpenTCS instance
+        double degrees = 14;
+        Quaternion q = new    Quaternion().setX(0).setY(0).setW(0.99).setZ(0.12);
+
+        double orientation = Math.toRadians(degrees);
+        geometry_msgs.msg.Quaternion q_converted  = UnitConverterLib.VehicleOrientationToQuaternion(degrees);
+        assert Math.abs(q.getX()-q_converted.getX()) < 0.01;
+        assert Math.abs(q.getY()-q_converted.getY()) < 0.01;
+        assert Math.abs(q.getZ()-q_converted.getZ()) < 0.01;
+        assert Math.abs(q.getW()-q_converted.getW()) < 0.01;
+
+    }
 }

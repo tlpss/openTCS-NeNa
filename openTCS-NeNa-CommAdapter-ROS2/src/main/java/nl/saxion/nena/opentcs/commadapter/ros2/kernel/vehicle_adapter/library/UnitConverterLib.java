@@ -60,4 +60,30 @@ public abstract class UnitConverterLib {
 
         return angleDegree;
     }
+
+    public static geometry_msgs.msg.Quaternion VehicleOrientationToQuaternion(@Nonnull double vehicleorientation) {
+        /* ROS TF provides function to convert RPY to Quaternion, but TF is not ported to the RCL..
+        http://docs.ros.org/melodic/api/tf/html/c++/namespacetf.html#a09ddb5ff50f5032761feaa6a760f7344
+
+        therefore we go to the implementation and do a similar implementation, keeping in mind that only the Yaw is relevant as the other angles are zero.
+        http://docs.ros.org/melodic/api/tf/html/c++/Quaternion_8h_source.html#l00096
+        https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles
+         */
+
+        double yaw = Math.toRadians(vehicleorientation);
+        geometry_msgs.msg.Quaternion q = new geometry_msgs.msg.Quaternion();
+        double cy = Math.cos(yaw * 0.5);
+        double sy = Math.sin(yaw * 0.5);
+        double cp = 1.0;
+        double sp = 0.0;
+        double cr = 1.0;
+        double sr = 0.0;
+
+        q.setW(cr * cp * cy + sr * sp * sy);
+        q.setX(sr * cp * cy - cr * sp * sy);
+        q.setY( cr * sp * cy + sr * cp * sy);
+        q.setZ(cr * cp * sy - sr * sp * cy);
+
+        return q;
+    }
 }
