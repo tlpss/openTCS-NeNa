@@ -10,5 +10,5 @@ public interface OperationConstants {
     String NOP = "NOP";
     String LOAD_CARGO = "Load cargo";
     String UNLOAD_CARGO = "Unload cargo";
-    String PARK = "Park";
+    String PARK = "PARK";
 }
