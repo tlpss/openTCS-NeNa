@@ -1,5 +1,11 @@
 # NeNa ROS 2 Vehicle Driver For OpenTCS.
 
+-----
+
+**duplicated from: https://github.com/tlpss/openTCS-NeNa/tree/master/openTCS-NeNa-Common As this is an open source driver, please push relevant updates to this fork so that everyone can use them.**
+
+-----
+
 OpenTCS and ROS2 are both open-source software packages. OpenTCS can be used as a fleet manager to autonomously manage self-driving vehicles. ROS2 is a widely used software package that takes care of common functionality that many AGVs share, such as support for sensors, cameras and SLAM. 
 
  At the moment of writing, there are no (open-source) software packages available to manage ROS2 robots from the OpenTCS Fleet Manager. The development of such a vehicle driver is part of my Bachelor Thesis.
