@@ -160,6 +160,7 @@ public class ExecuteTransportOrderWorkflow implements NavigationGoalListener, Op
     @Override
     public void onOperationExecutionSucceeded() {
         LOG.info("Operation succeeded!");
+
         setCommandWorkflowSucceeded();
     }
 

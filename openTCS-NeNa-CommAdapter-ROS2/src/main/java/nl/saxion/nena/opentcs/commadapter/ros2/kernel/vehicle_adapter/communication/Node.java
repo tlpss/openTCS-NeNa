@@ -2,6 +2,7 @@ package nl.saxion.nena.opentcs.commadapter.ros2.kernel.vehicle_adapter.communica
 
 import action_msgs.msg.GoalStatusArray;
 import geometry_msgs.msg.PoseStamped;
+import std_msgs.msg.Bool;
 import geometry_msgs.msg.PoseWithCovarianceStamped;
 import lombok.Getter;
 import org.ros2.rcljava.RCLJava;
@@ -22,8 +23,9 @@ public class Node implements ComposableNode {
     private final org.ros2.rcljava.node.Node node;
     private final Publisher<PoseWithCovarianceStamped> initialPosePublisher;
     private final Publisher<PoseStamped> goalPublisher;
+    private final Publisher<Bool> startDockingPublisher;
 
-    public Node(@Nonnull NodeMessageListener nodeMessageListener, @Nonnull String namespace) {
+    public Node(@Nonnull NodeMessageListener nodeMessageListener, @Nonnull java.lang.String namespace) {
         this.node = RCLJava.createNode("opentcs", namespace, RCLJava.getDefaultContext());
 
         /* --------------- Publishers ---------------*/
@@ -47,5 +49,6 @@ public class Node implements ComposableNode {
         // TODO: Implement publisher and subscriber for LOAD CARGO operation.
 
         // TODO: Implement publisher and subscriber for UNLOAD CARGO operation.
+        this.startDockingPublisher = node.createPublisher(Bool.class, namespace + "/start_docking");
     }
 }

@@ -5,9 +5,12 @@ import nl.saxion.nena.opentcs.commadapter.ros2.kernel.vehicle_adapter.Ros2Proces
 import nl.saxion.nena.opentcs.commadapter.ros2.kernel.vehicle_adapter.communication.Node;
 import nl.saxion.nena.opentcs.commadapter.ros2.kernel.vehicle_adapter.operation.constants.OperationConstants;
 import org.opentcs.drivers.vehicle.LoadHandlingDevice;
+import java.lang.String;
+import std_msgs.msg.Bool;
 
 import javax.annotation.Nonnull;
 import java.util.Collections;
+import java.util.concurrent.TimeUnit;
 
 /**
  * A workflow class used to sequentially execute a operation on a vehicle.
@@ -81,11 +84,19 @@ public class ExecuteOperationWorkflow {
     }
 
     /* --------------- 2b: Execute unload cargo ---------------*/
-    private void executeUnloadCargo() {
+    private void executeUnloadCargo()  {
         Node opentcsNode = this.processModel.getNodeManager().getNode();
         System.out.println("UNLOADING CARGO...");
 
-        // TODO: Implement executor for UNLOAD CARGO operation.
+        // DUMMY DOCKING IMPLEMENTATION
+        Bool b = new Bool();
+        b.setData(Boolean.TRUE);
+        opentcsNode.getStartDockingPublisher().publish(b);
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         // Mark the vehicle as unloaded
         this.processModel.setVehicleLoadHandlingDevices(Collections.singletonList(new LoadHandlingDevice(LOAD_HANDLING_DEVICE_NAME, false)));
